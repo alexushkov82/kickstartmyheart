@@ -13,8 +13,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Kickstartmyheart App',
         debugShowCheckedModeBanner: false,
+        title: 'Kickstartmyheart App',
         theme: ThemeData.dark(),
         home: MyHomePage(title: 'Timetable'));
   }
