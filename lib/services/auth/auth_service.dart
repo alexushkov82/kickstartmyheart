@@ -1,3 +1,5 @@
+import 'package:kickstartmyheart/services/auth/firebase_auth_provider.dart';
+
 import 'auth_provider.dart';
 import 'auth_user.dart';
 
@@ -5,6 +7,11 @@ class AuthService implements AuthProvider {
   final AuthProvider provider;
 
   const AuthService(this.provider);
+
+  factory AuthService.firebase() => AuthService(FirebaseAuthProvider());
+
+  @override
+  Future<void> initialize() => provider.initialize();
 
   @override
   Future<AuthUser> createUser({required String email, required String password}) =>
