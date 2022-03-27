@@ -1,5 +1,4 @@
 import 'package:kickstartmyheart/services/auth/firebase_auth_provider.dart';
-
 import 'auth_provider.dart';
 import 'auth_user.dart';
 
@@ -18,7 +17,6 @@ class AuthService implements AuthProvider {
       provider.createUser(email: email, password: password);
 
   @override
-  // TODO: implement currentUser
   AuthUser? get currentUser => provider.currentUser;
 
   @override
