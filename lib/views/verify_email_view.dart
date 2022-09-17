@@ -20,7 +20,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
         children: [
           const Text('We\'ve sent you an email verification. Please open it '
               'to verify your account.'),
-          const Text('If you haven\'t received a verification email yet, press'
+          const Text('If you haven\'t received a verification email yet, press '
               'the button below :'),
           TextButton(
             onPressed: () async {
