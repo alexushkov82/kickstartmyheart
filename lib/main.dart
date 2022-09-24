@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:kickstartmyheart/services/auth/auth_service.dart';
+
+import '../views/login_view.dart';
+import '../views/register_view.dart';
+import '../views/verify_email_view.dart';
+import '../views/notes_view.dart';
+
+import '../services/auth/auth_service.dart';
+
+import 'constants/routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -8,54 +19,41 @@ void main() {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(title: 'Flutter Demo'),
+      home: const HomePage(),
+      routes: {
+        loginRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegisterView(),
+        notesRoute: (context) => const NotesView(),
+        verifyEmailRoute: (context) => const VerifyEmailView(),
+      },
     ),
   );
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You\'ve pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+    return FutureBuilder(
+      future: AuthService.firebase().initialize(),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.done:
+          final user = AuthService.firebase().currentUser;
+          if (user != null) {
+            if (user.isEmailVerified) {
+              return const NotesView();
+            } else {
+              return const VerifyEmailView();
+            }
+          } else {
+            return const LoginView();
+          }
+          default:
+            return const CircularProgressIndicator();
+        }
+      },
     );
   }
 }
