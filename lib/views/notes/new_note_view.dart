@@ -6,13 +6,37 @@ class NewNoteView extends StatefulWidget {
   const NewNoteView({Key? key}) : super(key: key);
 
   @override
-  State<NewNoteView> createState() => _NewNoteViewState();
+  _NewNoteViewState createState() => _NewNoteViewState();
 }
 
 class _NewNoteViewState extends State<NewNoteView> {
   DatabaseNote? _note;
   late final NotesService _notesService;
   late final TextEditingController _textController;
+
+  @override
+  void initState() {
+    _notesService = NotesService();
+    _textController = TextEditingController();
+    super.initState();
+  }
+
+  void _textControllerListener() async {
+    final note = _note;
+    if (note == null) {
+      return;
+    }
+    final text = _textController.text;
+    await _notesService.updateNote(
+      note: note,
+      text: text,
+    );
+  }
+
+  void _setupTextControllerListener() {
+    _textController.removeListener(_textControllerListener);
+    _textController.addListener(_textControllerListener);
+  }
 
   Future<DatabaseNote> createNewNote() async {
     final existingNote = _note;
@@ -27,8 +51,7 @@ class _NewNoteViewState extends State<NewNoteView> {
 
   void _deleteNoteIfTextIsEmpty() {
     final note = _note;
-    final text = _textController.text;
-    if (note != null && text.isEmpty) {
+    if (_textController.text.isEmpty && note != null) {
       _notesService.deleteNote(id: note.id);
     }
   }
@@ -37,29 +60,11 @@ class _NewNoteViewState extends State<NewNoteView> {
     final note = _note;
     final text = _textController.text;
     if (note != null && text.isNotEmpty) {
-      await _notesService.updateNote(note: note, text: text);
+      await _notesService.updateNote(
+        note: note,
+        text: text,
+      );
     }
-  }
-
-  void _textControllerListener() async {
-    final note = _note;
-    if (note == null) {
-      return;
-    }
-    final text = _textController.text;
-    await _notesService.updateNote(note: note, text: text);
-  }
-
-  void _setupTextContorollerListener() async {
-    _textController.removeListener(_textControllerListener);
-    _textController.addListener(_textControllerListener);
-  }
-
-  @override
-  void initState() {
-    _notesService = NotesService();
-    _textController = TextEditingController();
-    super.initState();
   }
 
   @override
@@ -82,16 +87,15 @@ class _NewNoteViewState extends State<NewNoteView> {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               _note = snapshot.data as DatabaseNote;
-              _setupTextContorollerListener();
+              _setupTextControllerListener();
               return TextField(
                 controller: _textController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: const InputDecoration(
-                  hintText: 'Start typing your text...',
+                  hintText: 'Start typing your note...',
                 ),
               );
-              break;
             default:
               return const CircularProgressIndicator();
           }
