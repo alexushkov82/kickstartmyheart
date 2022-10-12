@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../services/auth/auth_service.dart';
 import 'package:kickstartmyheart/constants/routes.dart';
+import 'package:kickstartmyheart/services/auth/auth_service.dart';
 
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({Key? key}) : super(key: key);
 
   @override
-  State<VerifyEmailView> createState() => _VerifyEmailViewState();
+  _VerifyEmailViewState createState() => _VerifyEmailViewState();
 }
 
 class _VerifyEmailViewState extends State<VerifyEmailView> {
@@ -18,13 +18,12 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
       ),
       body: Column(
         children: [
-          const Text('We\'ve sent you an email verification. Please open it '
-              'to verify your account.'),
-          const Text('If you haven\'t received a verification email yet, press '
-              'the button below :'),
+          const Text(
+              "We've sent you an email verification. Please open it to verify your account."),
+          const Text(
+              "If you haven't received a verification email yet, press the button below"),
           TextButton(
             onPressed: () async {
-              // final user = AuthService.firebase().currentUser;
               await AuthService.firebase().sendEmailVerification();
             },
             child: const Text('Send email verification'),
@@ -34,11 +33,11 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
               await AuthService.firebase().logOut();
               Navigator.of(context).pushNamedAndRemoveUntil(
                 registerRoute,
-                    (route) => false,
+                (route) => false,
               );
             },
             child: const Text('Restart'),
-          ),
+          )
         ],
       ),
     );

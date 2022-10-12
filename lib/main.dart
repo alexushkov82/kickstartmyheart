@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:kickstartmyheart/constants/routes.dart';
 import 'package:kickstartmyheart/services/auth/auth_service.dart';
-
-import 'views/auth/login_view.dart';
-import 'views/auth/register_view.dart';
-import 'views/auth/verify_email_view.dart';
-import 'views/notes/notes_view.dart';
-import 'views/notes/new_note_view.dart';
-
-import 'constants/routes.dart';
+import 'package:kickstartmyheart/views/auth/login_view.dart';
+import 'package:kickstartmyheart/views/notes/create_update_note_view.dart';
+import 'package:kickstartmyheart/views/notes/notes_view.dart';
+import 'package:kickstartmyheart/views/auth/register_view.dart';
+import 'package:kickstartmyheart/views/auth/verify_email_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
+      title: 'kickstartmyheart',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -24,7 +22,7 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const NotesView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
-        newNoteRoute: (context) => const NewNoteView(),
+        createOrUpdateNoteRoute: (context) => const CreateUpdateNoteView(),
       },
     ),
   );
@@ -40,16 +38,16 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
-          final user = AuthService.firebase().currentUser;
-          if (user != null) {
-            if (user.isEmailVerified) {
-              return const NotesView();
+            final user = AuthService.firebase().currentUser;
+            if (user != null) {
+              if (user.isEmailVerified) {
+                return const NotesView();
+              } else {
+                return const VerifyEmailView();
+              }
             } else {
-              return const VerifyEmailView();
+              return const LoginView();
             }
-          } else {
-            return const LoginView();
-          }
           default:
             return const CircularProgressIndicator();
         }

@@ -296,7 +296,7 @@ class DatabaseNote {
         userId = map[userIdColumn] as int,
         text = map[textColumn] as String,
         isSyncedWithCloud =
-        (map[isSyncedWithCloudColumn] as int) == 1 ? true : false;
+            (map[isSyncedWithCloudColumn] as int) == 1 ? true : false;
 
   @override
   String toString() =>
