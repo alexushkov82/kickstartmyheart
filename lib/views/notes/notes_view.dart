@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show ReadContext;
 import 'package:kickstartmyheart/constants/routes.dart';
 import 'package:kickstartmyheart/enums/menu_action.dart';
 import 'package:kickstartmyheart/services/auth/auth_service.dart';
+import 'package:kickstartmyheart/services/auth/bloc/auth_event.dart';
 import 'package:kickstartmyheart/services/cloud/cloud_note.dart';
 import 'package:kickstartmyheart/services/cloud/firebase_cloud_storage.dart';
 import 'package:kickstartmyheart/utilities/dialogs/logout_dialog.dart';
 import 'package:kickstartmyheart/views/notes/notes_list_view.dart';
+import 'package:kickstartmyheart/services/auth/bloc/auth_bloc.dart';
 
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -42,10 +45,8 @@ class _NotesViewState extends State<NotesView> {
                 case MenuAction.logout:
                   final shouldLogout = await showLogOutDialog(context);
                   if (shouldLogout) {
-                    await AuthService.firebase().logOut();
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      loginRoute,
-                      (_) => false,
+                    context.read<AuthBloc>().add(
+                      const AuthEventLogOut(),
                     );
                   }
               }
