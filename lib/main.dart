@@ -5,6 +5,7 @@ import 'package:kickstartmyheart/services/auth/bloc/auth_bloc.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_event.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_state.dart';
 import 'package:kickstartmyheart/services/auth/firebase_auth_provider.dart';
+import 'package:kickstartmyheart/views/auth/forgot_password_view.dart';
 import 'package:kickstartmyheart/views/auth/login_view.dart';
 import 'package:kickstartmyheart/views/notes/create_update_note_view.dart';
 import 'package:kickstartmyheart/views/notes/notes_view.dart';
@@ -50,14 +51,16 @@ class HomePage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is AuthStateLoggedIn) {
-          return const NotesView();
+        if (state is AuthStateRegistering) {
+          return const RegisterView();
         } else if (state is AuthStateNeedVerification) {
           return const VerifyEmailView();
         } else if (state is AuthStateLoggedOut) {
           return const LoginView();
-        } else if (state is AuthStateRegistering) {
-          return const RegisterView();
+        } else if (state is AuthStateForgotPassword) {
+          return const ForgotPasswordView();
+        } else if (state is AuthStateLoggedIn) {
+          return const NotesView();
         } else {
           return const Scaffold(
             body: CircularProgressIndicator(),
