@@ -3,7 +3,6 @@ import 'package:kickstartmyheart/firebase_options.dart';
 import 'package:kickstartmyheart/services/auth/auth_user.dart';
 import 'package:kickstartmyheart/services/auth/auth_provider.dart';
 import 'package:kickstartmyheart/services/auth/auth_exceptions.dart';
-
 import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseAuthException;
 
