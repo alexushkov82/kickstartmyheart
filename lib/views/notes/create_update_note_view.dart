@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kickstartmyheart/extensions/buildcontext/loc.dart';
 import 'package:kickstartmyheart/services/auth/auth_service.dart';
 import 'package:kickstartmyheart/utilities/generics/get_arguments.dart';
 import 'package:kickstartmyheart/services/cloud/cloud_note.dart';
@@ -92,7 +93,7 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Note'),
+        title: Text(context.loc.note),
         actions: [
           IconButton(
             onPressed: () async {
@@ -119,8 +120,8 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
                   controller: _textController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  decoration: const InputDecoration(
-                    hintText: 'Start typing your note...',
+                  decoration: InputDecoration(
+                    hintText: context.loc.start_typing_your_note,
                   ),
                 ),
               );

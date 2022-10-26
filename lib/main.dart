@@ -12,11 +12,14 @@ import 'package:kickstartmyheart/views/notes/notes_view.dart';
 import 'package:kickstartmyheart/views/auth/register_view.dart';
 import 'package:kickstartmyheart/views/auth/verify_email_view.dart';
 import 'package:kickstartmyheart/helpers/loading/loading_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       title: 'kickstartmyheart',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
