@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kickstartmyheart/constants/routes.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_bloc.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_event.dart';
@@ -12,7 +13,6 @@ import 'package:kickstartmyheart/views/notes/notes_view.dart';
 import 'package:kickstartmyheart/views/auth/register_view.dart';
 import 'package:kickstartmyheart/views/auth/verify_email_view.dart';
 import 'package:kickstartmyheart/helpers/loading/loading_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,9 +22,7 @@ void main() {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       title: 'kickstartmyheart',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(),
       home: BlocProvider<AuthBloc>(
         create: (context) => AuthBloc(FirebaseAuthProvider()),
         child: const HomePage(),
@@ -66,7 +64,7 @@ class HomePage extends StatelessWidget {
           return const NotesView();
         } else {
           return const Scaffold(
-            body: CircularProgressIndicator(),
+            body: Center(child: CircularProgressIndicator()),
           );
         }
       },
