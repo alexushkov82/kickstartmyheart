@@ -1,5 +1,5 @@
 #kickstartmyheart
 
-Notes App
+First Flutter App. Notes App.
 
 Motley Crue - Kickstart My Heart
