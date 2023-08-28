@@ -15,10 +15,10 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.5
-  firebase_core: ^2.4.0
-  firebase_auth: ^4.2.0
-  cloud_firestore: ^4.2.0
-  firebase_analytics: ^10.0.7
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.8.0
+  cloud_firestore: ^4.9.0
+  firebase_analytics: ^10.4.5
   sqflite: ^2.2.2
   path_provider: ^2.0.11
   path: ^1.8.2
@@ -33,7 +33,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.1
+  flutter_lints: ^2.0.2
   test: ^1.21.4
 
 
