@@ -46,6 +46,8 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
   Future<CloudNote> createOrGetExistingNote(BuildContext context) async {
     final widgetNote = context.getArgument<CloudNote>();
 
+    // await Future.delayed(const Duration(seconds: 5));
+
     if (widgetNote != null) {
       _note = widgetNote;
       _textController.text = widgetNote.text;
@@ -126,7 +128,9 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
                 ),
               );
             default:
-              return const CircularProgressIndicator();
+              return const Center(
+                  child: CircularProgressIndicator(),
+              );
           }
         },
       ),
