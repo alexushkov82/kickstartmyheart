@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kickstartmyheart/constants/routes.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_bloc.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_event.dart';
-import 'package:kickstartmyheart/services/auth/bloc/auth_state.dart';
+ import 'package:kickstartmyheart/services/auth/bloc/auth_state.dart';
 import 'package:kickstartmyheart/services/auth/firebase_auth_provider.dart';
 import 'package:kickstartmyheart/views/auth/forgot_password_view.dart';
 import 'package:kickstartmyheart/views/auth/login_view.dart';
@@ -22,7 +22,10 @@ void main() {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       title: 'kickstartmyheart',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        useMaterial3: true,
+      ),
       home: BlocProvider<AuthBloc>(
         create: (context) => AuthBloc(FirebaseAuthProvider()),
         child: const HomePage(),
