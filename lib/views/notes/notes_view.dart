@@ -16,7 +16,7 @@ extension Count<T extends Iterable> on Stream<T> {
 }
 
 class NotesView extends StatefulWidget {
-  const NotesView({Key? key}) : super(key: key);
+  const NotesView({super.key});
 
   @override
   _NotesViewState createState() => _NotesViewState();

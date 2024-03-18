@@ -8,7 +8,7 @@ import 'package:kickstartmyheart/utilities/dialogs/error_dialog.dart';
 import 'package:kickstartmyheart/utilities/dialogs/password_reset_email_sent_dialog.dart';
 
 class ForgotPasswordView extends StatefulWidget {
-  const ForgotPasswordView({Key? key}) : super(key: key);
+  const ForgotPasswordView({super.key});
 
   @override
   State<ForgotPasswordView> createState() => _ForgotPasswordViewState();

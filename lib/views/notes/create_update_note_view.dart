@@ -8,7 +8,7 @@ import 'package:kickstartmyheart/utilities/dialogs/cannot_share_empty_note_dialo
 import 'package:share_plus/share_plus.dart';
 
 class CreateUpdateNoteView extends StatefulWidget {
-  const CreateUpdateNoteView({Key? key}) : super(key: key);
+  const CreateUpdateNoteView({super.key});
 
   @override
   _CreateUpdateNoteViewState createState() => _CreateUpdateNoteViewState();

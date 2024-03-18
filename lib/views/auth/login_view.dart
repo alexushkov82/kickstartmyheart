@@ -8,7 +8,7 @@ import 'package:kickstartmyheart/services/auth/bloc/auth_bloc.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_state.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();

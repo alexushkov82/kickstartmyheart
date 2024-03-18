@@ -8,7 +8,7 @@ import 'package:kickstartmyheart/services/auth/bloc/auth_bloc.dart';
 import 'package:kickstartmyheart/services/auth/bloc/auth_state.dart';
 
 class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+  const RegisterView({super.key});
 
   @override
   _RegisterViewState createState() => _RegisterViewState();
