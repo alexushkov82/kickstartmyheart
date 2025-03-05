@@ -1,0 +1,61 @@
+{
+    "logout_button": "Logg ut",
+    "task": "Oppgave",
+    "cancel": "Avbryt",
+    "yes": "Ja",
+    "delete": "Slett",
+    "sharing": "Deling",
+    "ok": "OK",
+    "login": "Logg inn",
+    "verify_email": "Verifiser e-post",
+    "register": "Registrer",
+    "restart": "Start på nytt",
+
+    "type_your_task_title": "Skriv inn oppgavens tittel",
+    "type_your_task_description": "Skriv inn beskrivelsen av oppgaven",
+    "delete_task_prompt": "Er du sikker på at du vil slette denne oppgaven?",
+    "cannot_share_empty_task_prompt": "Kan ikke dele en tom oppgave!",
+    "generic_error_prompt": "En feil oppstod",
+    "logout_dialog_prompt": "Er du sikker på at du vil logge ut?",
+
+    "password_reset": "Tilbakestill passord",
+    "password_reset_dialog_prompt": "Vi har sendt deg en lenke for å tilbakestille passordet. Sjekk e-posten din for mer informasjon.",
+
+    "login_error_cannot_find_user": "Kan ikke finne en bruker med de angitte opplysningene!",
+    "login_error_wrong_credentials": "Feil påloggingsinformasjon",
+    "login_error_auth_error": "Autentiseringsfeil",
+
+    "login_view_prompt": "Logg inn på kontoen din for å samhandle med og opprette oppgaver!",
+
+    "login_view_forgot_password": "Jeg har glemt passordet mitt",
+    "login_view_not_registered_yet": "Ikke registrert ennå? Registrer deg her!",
+
+    "email_text_field_placeholder": "Skriv inn e-posten din her",
+    "password_text_field_placeholder": "Skriv inn passordet ditt her",
+
+    "forgot_password": "Glemt passord",
+    "forgot_password_view_generic_error": "Vi kunne ikke behandle forespørselen din. Vennligst sørg for at du er en registrert bruker, eller hvis ikke, registrer deg ved å gå ett steg tilbake.",
+    "forgot_password_view_prompt": "Hvis du har glemt passordet ditt, kan du bare skrive inn e-posten din, så sender vi deg en lenke for å tilbakestille passordet.",
+    "forgot_password_view_send_me_link": "Send meg lenke for å tilbakestille passordet",
+    "forgot_password_view_back_to_login": "Tilbake til innloggingssiden",
+
+    "register_error_weak_password": "Dette passordet er ikke sikkert nok. Vennligst velg et annet passord!",
+    "register_error_email_already_in_use": "Denne e-posten er allerede registrert for en annen bruker. Vennligst velg en annen e-post!",
+    "register_error_generic": "Registreringen mislyktes. Vennligst prøv igjen senere!",
+    "register_error_invalid_email": "E-postadressen du oppga ser ut til å være ugyldig. Vennligst prøv en annen e-postadresse!",
+    "register_view_prompt": "Skriv inn e-posten din og passordet for å se notatene dine!",
+    "register_view_already_registered": "Allerede registrert? Logg inn her!",
+
+    "verify_email_view_prompt": "Vi har sendt deg en e-postbekreftelse. Åpne den for å verifisere kontoen din. Hvis du ikke har mottatt verifiserings-e-posten ennå, trykk på knappen nedenfor!",
+    "verify_email_send_email_verification": "Send e-postbekreftelse",
+
+    "tasks_title": "{count, plural, =0{Ingen oppgaver ennå} =1{1 oppgave} other{{count} oppgaver}}",
+    "@tasks_title": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "3 oppgaver"
+            }
+        }
+    }
+}

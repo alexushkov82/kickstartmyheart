@@ -1,7 +1,7 @@
+import 'package:kickstartmyheart/features/auth/data/data_sources/i_auth_serivce.dart';
+import 'package:kickstartmyheart/features/auth/domain/entities/auth_user.dart';
 import 'package:test/test.dart';
-import 'package:kickstartmyheart/services/auth/auth_exceptions.dart';
-import 'package:kickstartmyheart/services/auth/auth_provider.dart';
-import 'package:kickstartmyheart/services/auth/auth_user.dart';
+import 'package:kickstartmyheart/features/auth/data/data_sources/auth_exceptions.dart';
 
 void main() {
  group('Mock Authentication', () {
@@ -78,7 +78,7 @@ void main() {
 
 class NotInitializedException implements Exception {}
 
-class MockAuthProvider implements AuthProvider {
+class MockAuthProvider implements IAuthService {
   AuthUser? _user;
   var _isInitialized = false;
   bool get isInitialized => _isInitialized;
